@@ -36,9 +36,9 @@ public class Libro {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private EstadoLectura estadoLectura = EstadoLectura.PENDIENTE;
+    private EstadoLectura estadoLectura = EstadoLectura.pendiente;
 
     private LocalDate fechaSeleccion;
 
-    public enum EstadoLectura { PENDIENTE, EN_LECTURA, LEIDO }
+    public enum EstadoLectura { pendiente, en_lectura, leido }
 }

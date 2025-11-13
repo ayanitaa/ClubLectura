@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import com.clublectura.Backend_ClubLectura.Repository.IUsuarioRepository;
 
+@Service
+
 public class UsuarioServiceImp implements IUsuarioService {
 
     private final IUsuarioRepository repo;

@@ -37,7 +37,7 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private RolUsuario rol = RolUsuario.LECTOR;
+    private RolUsuario rol = RolUsuario.lector;
 
-    public enum RolUsuario { LECTOR, MODERADOR, ADMINISTRADOR }
+    public enum RolUsuario { lector, moderador, administrador }
 }

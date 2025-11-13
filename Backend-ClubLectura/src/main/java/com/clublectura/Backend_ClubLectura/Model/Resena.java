@@ -16,6 +16,7 @@ import lombok.*;
 @Builder
 
 public class Resena {
+    @Id
     private Integer idResena;
 
     @NotNull
