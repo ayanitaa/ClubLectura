@@ -3,6 +3,8 @@ package com.clublectura.Backend_ClubLectura.Service;
 import com.clublectura.Backend_ClubLectura.Model.Usuario;
 import com.clublectura.Backend_ClubLectura.Exception.RecursoNoEncontradoException;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.clublectura.Backend_ClubLectura.Repository.IUsuarioRepository;
 
@@ -10,11 +12,13 @@ import com.clublectura.Backend_ClubLectura.Repository.IUsuarioRepository;
 
 public class UsuarioServiceImp implements IUsuarioService {
 
-    private final IUsuarioRepository repo;
+    @Autowired
+    private IUsuarioRepository repo;
 
     public UsuarioServiceImp(IUsuarioRepository repo) {
         this.repo = repo;
     }
+
     @Override
     public List<Usuario> listar() {
         return repo.findAll();

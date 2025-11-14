@@ -4,6 +4,7 @@ import com.clublectura.Backend_ClubLectura.Model.Resena;
 import java.util.List;
 
 public interface IResenaService {
+    
     List<Resena> listar();
     Resena obtener(Integer id);
     Resena crear(Resena resena);

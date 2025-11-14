@@ -5,43 +5,48 @@ import java.util.List;
 import com.clublectura.Backend_ClubLectura.Repository.ILibroRepository;
 import com.clublectura.Backend_ClubLectura.Exception.RecursoNoEncontradoException;
 import org .springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Service
 
 public class LibroServiceImp implements ILibroService {
-    private final ILibroRepository repo;
 
-    public LibroServiceImp(ILibroRepository repo) { this.repo = repo; }
-
-    @Override
-    public List<Libro> listar() { return repo.findAll(); }
+    @Autowired
+    private ILibroRepository repo;
 
     @Override
-    public Libro obtener(Integer id) {
-        return repo.findById(id).orElseThrow(() ->
-                new RecursoNoEncontradoException("Libro no encontrado"));
+    public List<Libro> listar() {
+        return repo.findAll();
     }
 
     @Override
-    public Libro crear(Libro l) { return repo.save(l); }
+    public Libro obtener(Integer id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Libro no encontrado"));
+    }
 
     @Override
-    public Libro actualizar(Integer id, Libro l) {
-        Libro db = obtener(id);
-        db.setTitulo(l.getTitulo());
-        db.setAutor(l.getAutor());
-        db.setGenero(l.getGenero());
-        db.setAnioPublicacion(l.getAnioPublicacion());
-        db.setSinopsis(l.getSinopsis());
-        db.setPortada(l.getPortada());
-        db.setEstadoLectura(l.getEstadoLectura());
-        db.setFechaSeleccion(l.getFechaSeleccion());
-        return repo.save(db);
+    public Libro crear(Libro libro) {
+        return repo.save(libro);
+    }
+
+    @Override
+    public Libro actualizar(Integer id, Libro libro) {
+        if (!repo.existsById(id)) {
+            throw new RecursoNoEncontradoException("Libro no encontrado");
+        }
+        libro.setIdLibro(id);
+        return repo.save(libro);
     }
 
     @Override
     public void eliminar(Integer id) {
-        if (!repo.existsById(id)) throw new RecursoNoEncontradoException("Libro no encontrado");
+        if (!repo.existsById(id)) {
+            throw new RecursoNoEncontradoException("Libro no encontrado");
+        }
         repo.deleteById(id);
     }
 }
+
+

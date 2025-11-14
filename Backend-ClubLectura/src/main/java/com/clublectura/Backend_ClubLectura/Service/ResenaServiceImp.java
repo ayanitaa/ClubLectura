@@ -5,11 +5,15 @@ import com.clublectura.Backend_ClubLectura.Exception.RecursoNoEncontradoExceptio
 import com.clublectura.Backend_ClubLectura.Model.Resena;
 import com.clublectura.Backend_ClubLectura.Repository.IResenaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Service
 
 public class ResenaServiceImp implements IResenaService {
-private final IResenaRepository repo;
+    
+@Autowired
+private IResenaRepository repo;
 
     public ResenaServiceImp(IResenaRepository repo) {
         this.repo = repo;

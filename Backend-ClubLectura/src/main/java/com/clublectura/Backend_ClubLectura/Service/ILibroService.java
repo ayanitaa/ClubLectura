@@ -4,6 +4,7 @@ import com.clublectura.Backend_ClubLectura.Model.Libro;
 import java.util.List;
 
 public interface ILibroService {
+    
     List<Libro> listar();
     Libro obtener(Integer id);
     Libro crear(Libro libro);

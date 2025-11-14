@@ -1,35 +1,38 @@
 package com.clublectura.Backend_ClubLectura.Model;
 
-import jakarta.persistence.*;
-import lombok.*;
 import java.time.LocalDate;
 
+import jakarta.persistence.*;
+import lombok.*;
+
 @Entity
-@Table(name = "inscripcion")
+@Table(name = "propuestalibro")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
-public class Inscripcion {
+public class PropuestaLibro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idInscripcion;
+    private Integer idPropuesta;
 
-    private LocalDate fecha;
+    private LocalDate fechaPropuesta;
 
     @Enumerated(EnumType.STRING)
-    private EstadoInscripcion estadoInscripcion;
+    private Estado estado;
+
+    private LocalDate fechaDecision;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idRetoLectura")
-    private RetoLectura retoLectura;
+    @JoinColumn(name = "idLibro")
+    private Libro libro;
 
-    public enum EstadoInscripcion {
-        activa, finalizada, cancelada
+    public enum Estado {
+        seleccionado, rechazado
     }
 }

@@ -4,6 +4,7 @@ import com.clublectura.Backend_ClubLectura.Model.Usuario;
 import java.util.List;
 
 public interface IUsuarioService {
+    
     List<Usuario> listar();
     Usuario obtener(Integer id);
     Usuario crear(Usuario usuario);

@@ -5,31 +5,26 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "inscripcion")
+@Table(name = "votacion")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
-public class Inscripcion {
+public class Votacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idInscripcion;
-
-    private LocalDate fecha;
-
-    @Enumerated(EnumType.STRING)
-    private EstadoInscripcion estadoInscripcion;
+    private Integer idVotacion;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idRetoLectura")
-    private RetoLectura retoLectura;
+    @JoinColumn(name = "idLibro")
+    private Libro libro;
 
-    public enum EstadoInscripcion {
-        activa, finalizada, cancelada
-    }
+    private LocalDate fecha;
+
+    private Boolean voto;
 }
