@@ -16,7 +16,9 @@ import lombok.*;
 @Builder
 
 public class Resena {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idResena;
 
     @NotNull
