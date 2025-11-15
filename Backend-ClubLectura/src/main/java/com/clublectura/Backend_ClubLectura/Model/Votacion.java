@@ -10,8 +10,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class Votacion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idVotacion;
@@ -21,10 +21,10 @@ public class Votacion {
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idLibro")
-    private Libro libro;
+    @JoinColumn(name = "idPropuesta")
+    private PropuestaLibro propuesta;
 
     private LocalDate fecha;
 
-    private Boolean voto;
+    private Boolean voto; 
 }
