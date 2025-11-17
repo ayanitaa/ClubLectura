@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Builder
 
 public class Libro {
+    
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idLibro;
 
