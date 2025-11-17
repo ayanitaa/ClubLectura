@@ -17,30 +17,31 @@ public class ProgresoRetoController {
     @Autowired
     private IProgresoRetoService service;
 
-    @GetMapping
-    public List<ProgresoReto> listar() {
-        return service.listar();
+    @GetMapping("/listar")
+    public ResponseEntity<List<ProgresoReto>> listar() {
+        return new ResponseEntity<>(service.listar(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<ProgresoReto> obtenerProgreso(@PathVariable Integer id) {
         ProgresoReto progreso = service.obtener(id);
         return ResponseEntity.ok(progreso);
     }
 
-    @PostMapping
+    @PostMapping("/insertar")
     public ResponseEntity<ProgresoReto> crearProgreso(@Valid @RequestBody ProgresoReto progreso) {
         ProgresoReto nuevoProgreso = service.crear(progreso);
         return new ResponseEntity<>(nuevoProgreso, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ProgresoReto> actualizarProgreso(@PathVariable Integer id, @Valid @RequestBody ProgresoReto progreso) {
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<ProgresoReto> actualizarProgreso(@PathVariable Integer id,
+                                                           @Valid @RequestBody ProgresoReto progreso) {
         ProgresoReto progresoActualizado = service.actualizar(id, progreso);
         return ResponseEntity.ok(progresoActualizado);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarProgreso(@PathVariable Integer id) {
         service.eliminar(id);
         return ResponseEntity.noContent().build();

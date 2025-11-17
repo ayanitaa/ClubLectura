@@ -24,6 +24,10 @@ public class ProgresoReto {
     private Estado estado;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idLibro")
+    private RetoLectura retoLectura;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idInscripcion")
     private Inscripcion inscripcion;
 

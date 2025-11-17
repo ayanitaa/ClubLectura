@@ -21,6 +21,6 @@ public class Asistencia {
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEvento")
+    @JoinColumn(name = "idReunion")
     private Reunion reunion;
 }
