@@ -32,10 +32,9 @@ public class InscripcionController {
         return new ResponseEntity<>(inscripcionService.obtener(id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminarInscripcion(@PathVariable Integer id) {
-        inscripcionService.eliminar(id);
-        return new ResponseEntity<>("Inscripción eliminada correctamente", HttpStatus.OK);
+    @PutMapping("/cancelar/{id}")
+    public ResponseEntity<String> cancelarInscripcion(@PathVariable Integer id) {
+        return new ResponseEntity<>(inscripcionService.cancelar(id), HttpStatus.OK);
     }
 
     @PutMapping("/actualizar/{id}")

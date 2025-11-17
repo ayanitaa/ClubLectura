@@ -9,5 +9,5 @@ public interface IInscripcionService {
     Inscripcion obtener(Integer id);
     Inscripcion crear(Inscripcion inscripcion);
     Inscripcion actualizar(Integer id, Inscripcion inscripcion);
-    String eliminar(Integer id);
+    String cancelar(Integer id);
 }
